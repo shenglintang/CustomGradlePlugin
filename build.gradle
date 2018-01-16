@@ -1,0 +1,63 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+//apply plugin:'myPlugin'
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+task myTask{
+    println("aaaa")
+}
+//定义闭包
+def myClosure = {
+    String param1 ,int param2 ->
+        println("this is a Closure"+param1+param2)
+}
+myTask <<{
+    println("doLast")
+    def boolean x =true
+    println(x.getClass().getCanonicalName())
+    //定义list
+    def myList = [1,"abc",true]
+
+    println(myList[2])
+    println(myList[5])
+    myList[10] = 1000
+    println(myList[10])
+    println(myList.size())
+    //定义map
+    def myMap = ["one" :"1","two":"2" ]
+    println(myMap.one)
+    //定义range类
+    def myRange = 1..<5
+    println(myRange.from)
+    println(myRange.to)
+    //调用闭包
+//    myClosure.call("123",21)
+    myClosure("123",21)
+
+
+}
+myTask.doFirst{
+    println("doFirst")
+}

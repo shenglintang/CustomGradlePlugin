@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">test</string>
+    <string name="hi">你好!</string>
+    <string name="hello_world">世界!</string>
+</resources>
